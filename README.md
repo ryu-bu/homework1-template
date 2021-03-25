@@ -39,3 +39,24 @@ in the `output` directory
 └── README.md
 ```
 
+## New Optimization Structure
+This is the new structure tree with new optimization scaffolding scripts that modify the input file and output it under `/input/modified/` folder.
+
+```
+<omitted>
+├── input
+│   ├── Eco1C1G1T1.UCF.json
+│   ├── Eco1C1G1T1.input.json
+│   ├── Eco1C1G1T1.output.json
+│   ├── and.v
+│   ├── modified
+│   │   └── Eco1C1G1T1.input.json
+│   ├── nand.v
+│   ├── options.csv
+│   ├── struct.v
+│   └── xor.v
+├── main.py
+├── optimization.py
+├── output
+<omitted>
+```
