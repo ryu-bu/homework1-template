@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome {% endblock %}</h1>
+    
+    <h2>1. Choose a Verilog File</h2>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="selectVerilog" value="and" checked>
+    <label class="form-check-label" for="selectVerilog1">
+        and.v
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="selectVerilog" value="nand">
+    <label class="form-check-label" for="selectVerilog2">
+        nand.v
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="selectVerilog" value="xor">
+    <label class="form-check-label" for="selectVerilog3">
+        xor.v
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="selectVerilog" value="struct">
+    <label class="form-check-label" for="selectVerilog4">
+        struct.v
+    </label>
+    </div>
+    
+    <hr>
+
+    <h2>2. Choose an Input File</h2>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="selectInput" value="Eco1C1G1T1" checked>
+    <label class="form-check-label" for="selectInput1">
+        Eco1C1G1T1.input.json
+    </label>
+    </div>
+
+    <hr>
+
+    <h2>3. Choose an Output File</h2>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="selectOutput" value="Eco1C1G1T1" checked>
+    <label class="form-check-label" for="selectOutput1">
+        Eco1C1G1T1.output.json
+    </label>
+    </div>
+
+    <hr>
+
+    <h2>4. Choose an UCF File</h2>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="selectUCF" value="Eco1C1G1T1" checked>
+    <label class="form-check-label" for="selectUCF1">
+        Eco1C1G1T1.UCF.json
+    </label>
+    </div>
+
+    <form id="returnForm" method=post action="">
+    </form>
+
+    <!-- <img src="/static/loading.GIF" /> -->
+    <button onclick="$('#loading').show(); calculate_score()">submit</button>
+
+    <div id="loading" style="display:none;"><img src="/static/loading.GIF" alt="" /></div>
+    <script>
+        // get verilog file
+        function getVerilog() {
+            let element = document.getElementsByName('selectVerilog');
+            for (let i = 0; i < element.length; i++) {
+                if (element[i].checked){
+                    return element[i].value;
+                }
+            }
+            return 0
+        }
+
+        // get input file
+        function getInput() {
+            let element = document.getElementsByName('selectInput');
+            for (let i = 0; i < element.length; i++) {
+                if (element[i].checked){
+                    return element[i].value;
+                }
+            }
+            return 0
+        }
+        
+        function getOutput() {
+            let element = document.getElementsByName('selectOutput');
+            for (let i = 0; i < element.length; i++) {
+                if (element[i].checked){
+                    return element[i].value;
+                }
+            }
+            return 0
+        }
+
+        function getUCF() {
+            let element = document.getElementsByName('selectUCF');
+            for (let i = 0; i < element.length; i++) {
+                if (element[i].checked){
+                    return element[i].value;
+                }
+            }
+            return 0
+        }
+
+        function calculate_score() {
+            verilog_file = getVerilog();
+            input_file = getInput();
+            output_file = getOutput();
+            ucf_file = getUCF();
+            // showLoading();
+            formElem = document.getElementById("returnForm");
+            formElem.action = `/generate-score?verilog=${verilog_file}&input=${input_file}&output=${output_file}&ucf=${ucf_file}`;
+            formElem.submit();
+            // window.location.href = `/generate-score?verilog=${verilog_file}&input=${input_file}&output=${output_file}&ucf=${ucf_file}`;
+        }
+
+        function showLoading() {
+            document.getElementById('loading').innerHTML = '<image src="/static/loading.GIF"/>';
+        }
+    </script>
+{% endblock %}
+
