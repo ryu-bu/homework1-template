@@ -14,6 +14,14 @@ pipenv shell
 flask run
 ```
 
+If above doesn't work:
+```
+$ python3 -m venv env
+$ source env/bin/activate
+(env) $ pip install -r requirements.txt
+(env) $ flask run
+```
+
 It runs on localhost:5000
 
 ## New Optimization Structure

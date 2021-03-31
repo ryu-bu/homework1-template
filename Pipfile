@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-celloapi2 = "*"
+celloapi2 = "0.2.3"
 flask = "*"
 
 [dev-packages]
