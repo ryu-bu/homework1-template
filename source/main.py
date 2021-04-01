@@ -3,10 +3,6 @@ from celloapi2 import CelloQuery, CelloResult
 from optimization import optimize
 
 def calc_score(verilog, inp, output, ucf):
-
-    # run optimizaiton and create a modifled file under "modified" directory
-    optimize(inp)
-
     # Set our directory variables.
     in_dir = os.path.join(os.getcwd(), 'input')
     out_dir = os.path.join(os.getcwd(), 'output')

@@ -149,3 +149,5 @@ def optimize(chassis_name):
         json.dump(data, new_file)
 
     print("Optimization done")
+
+    return data

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Score {% endblock %}</h1>
+    <h2>Optimized Score is {{ score }}</h2>
+
+
+    <h4>Download the Optimized Input File</h4>
+    <button type="button" class="btn btn-primary" onclick="downloadFile()">Download</button>
+
+    <script>
+        function downloadFile() {
+            let element = document.createElement('a');
+            json_obj = '{{ data|tojson }}';
+            console.log(json_obj);
+            element.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(json_obj));
+            element.setAttribute('download', '{{ file }}');
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+    </script>
+{% endblock %}

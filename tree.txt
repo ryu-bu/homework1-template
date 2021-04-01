@@ -1,0 +1,34 @@
+.
+├── dockerfile
+├── source
+│   ├── Pipfile
+│   ├── Pipfile.lock
+│   ├── README.md
+│   ├── app.py
+│   ├── input
+│   │   ├── Eco1C1G1T1.UCF.json
+│   │   ├── Eco1C1G1T1.input.json
+│   │   ├── Eco1C1G1T1.output.json
+│   │   ├── and.v
+│   │   ├── modified
+│   │   │   └── Eco1C1G1T1.input.json
+│   │   ├── nand.v
+│   │   ├── options.csv
+│   │   ├── struct.v
+│   │   └── xor.v
+│   ├── main.py
+│   ├── optimization.py
+│   ├── output
+│   ├── poetry.lock
+│   ├── pyproject.toml
+│   ├── requirements.txt
+│   ├── static
+│   │   └── loading.GIF
+│   └── templates
+│       ├── about.html
+│       ├── base.html
+│       ├── index.html
+│       └── score.html
+└── tree.txt
+
+6 directories, 25 files
