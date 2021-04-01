@@ -1,21 +1,23 @@
 import os
-
+import datetime
 from celloapi2 import CelloQuery, CelloResult
 
+# Opimized Process Time Recording Start
+starttime = datetime.datetime.now()
 # Set our directory variables.
-in_dir = os.path.join(os.getcwd(), 'input')
-out_dir = os.path.join(os.getcwd(), 'output')
+in_dir  = os.path.join(os.getcwd(), "input")
+out_dir = os.path.join(os.getcwd(), "output")
 
-modified_dir = 'modified/'
+modified_dir = "modified/"
 
 # Set our input files.
-chassis_name = 'Eco1C1G1T1'
-in_ucf = f'{chassis_name}.UCF.json'
-v_file = 'and.v'
-options = 'options.csv'
+chassis_name = "Eco1C1G1T1"
+in_ucf  = f"{chassis_name}.UCF.json"
+v_file  = "and.v"
+options = "options.csv"
 # input_sensor_file = f'{chassis_name}.input.json'  # this is original file
-input_sensor_file = f'{modified_dir}{chassis_name}.input.json'  # this is modified file
-output_device_file = f'{chassis_name}.output.json'
+input_sensor_file  = f"{modified_dir}{chassis_name}.input.json"  # this is modified file
+output_device_file = f"{chassis_name}.output.json"
 q = CelloQuery(
     input_directory=in_dir,
     output_directory=out_dir,
@@ -31,4 +33,6 @@ q = CelloQuery(
 q.get_results()
 # Fetch our Results.
 res = CelloResult(results_dir=out_dir)
-print(res.circuit_score)
+endtime = datetime.datetime.now()
+print("The Optimized Score is:",res.circuit_score)
+print ("The Processing Time is:",(endtime - starttime).seconds,"Seconds")
