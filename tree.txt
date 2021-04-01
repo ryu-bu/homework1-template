@@ -1,9 +1,11 @@
 .
+├── Pipfile
+├── Pipfile.lock
+├── README.md
 ├── dockerfile
+├── poetry.lock
+├── pyproject.toml
 ├── source
-│   ├── Pipfile
-│   ├── Pipfile.lock
-│   ├── README.md
 │   ├── app.py
 │   ├── input
 │   │   ├── Eco1C1G1T1.UCF.json
@@ -18,9 +20,6 @@
 │   │   └── xor.v
 │   ├── main.py
 │   ├── optimization.py
-│   ├── output
-│   ├── poetry.lock
-│   ├── pyproject.toml
 │   ├── requirements.txt
 │   ├── static
 │   │   └── loading.GIF
@@ -31,4 +30,4 @@
 │       └── score.html
 └── tree.txt
 
-6 directories, 25 files
+5 directories, 25 files
