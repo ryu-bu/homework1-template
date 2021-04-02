@@ -19,6 +19,8 @@ _mailinglist
 docs/_build/
 .vscode
 
+source/input/modified/*
+
 # Since it's not working yet
 dockerfile
 

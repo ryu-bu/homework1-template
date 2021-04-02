@@ -32,7 +32,6 @@ Note: some folders are ommitted for simplicity.
 
 ```
 .
-├── dockerfile
 ├── source
 │   ├── Pipfile
 │   ├── Pipfile.lock
@@ -44,7 +43,6 @@ Note: some folders are ommitted for simplicity.
 │   │   ├── Eco1C1G1T1.output.json
 │   │   ├── and.v
 │   │   ├── modified
-│   │   │   └── Eco1C1G1T1.input.json
 │   │   ├── nand.v
 │   │   ├── options.csv
 │   │   ├── struct.v

@@ -2,7 +2,18 @@ import os
 from celloapi2 import CelloQuery, CelloResult
 from optimization import optimize
 
-def calc_score(verilog, inp, output, ucf):
+def calc_score(verilog, inp, output, ucf) -> int:
+    """Wrapped the main.py provided in the template in a function. It calls celloapi to calculate the score.
+
+    Args:
+        verilog (string): user specified verilog file
+        inp (string): user specified input file
+        output (string): user specified output file
+        ucf (string): user specified ucf file
+
+    Returns:
+        int: returns the circuit score. 
+    """
     # Set our directory variables.
     in_dir = os.path.join(os.getcwd(), 'input')
     out_dir = os.path.join(os.getcwd(), 'output')

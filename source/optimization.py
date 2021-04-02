@@ -1,7 +1,16 @@
 import json
 import os 
 
-def optimize(chassis_name):
+def optimize(chassis_name) -> object:
+    """optimization algorithm that modifies the input file and creates a new modified file under /source/input/modified/ directory
+
+    Args:
+        chassis_name (string): name of the input file
+
+    Returns:
+        object: returns modified json object. 
+    """
+
     input_dir = os.path.join(os.getcwd(), 'input')
     output_dir = f'{input_dir}/modified'
 
@@ -14,10 +23,6 @@ def optimize(chassis_name):
         data = json.load(f)
 
 
-    # ymax should be smaller for On min
-    # ymin should be larger for Off min
-
-
     # predefinition in the higher scope
     ymax = 0
     ymin = 0
@@ -28,15 +33,15 @@ def optimize(chassis_name):
 
     inc_slope_para = 1.05
     dec_slope_para = 1.05
-    stronger_prom_para = 1.50
+    stronger_prom_para = 1.5
     weaker_prom_para = 1.5
-    strong_rbs_para = 1.50
-    weak_rbs_para = 1.50
-
+    strong_rbs_para = 2
+    weak_rbs_para = 14
 
     for field in data:
         if field["collection"] == "models" and field['name'] == 'LacI_sensor_model':
             # LacI is Lac repressor, Thus is weak promoter
+            # Ribosome Bind Site of LacI required fully optimized
             LacI_params = field["parameters"]
             for param in LacI_params:
                 if param["name"] == "ymax":
@@ -85,7 +90,7 @@ def optimize(chassis_name):
                 elif param["name"] == "beta":
                     k = param["value"]
 
-                    param["value"] = k / weak_rbs_para
+                    param["value"] = k / strong_rbs_para
 
                 else:
                     pass
@@ -112,7 +117,7 @@ def optimize(chassis_name):
                 elif param["name"] == "beta":
                     k = param["value"]
 
-                    param["value"] = k / weak_rbs_para
+                    param["value"] = k / strong_rbs_para
 
                 else:
                     pass
@@ -140,14 +145,17 @@ def optimize(chassis_name):
                 elif param["name"] == "beta":
                     k = param["value"]
 
-                    param["value"] = k / weak_rbs_para
+                    param["value"] = k / strong_rbs_para
 
                 else:
                     pass
-                
+
+    
+    # create a new file and write in the modified directory.             
     with open(f'{output_dir}/{chassis_name}.input.json', 'w') as new_file:
         json.dump(data, new_file)
 
     print("Optimization done")
 
+    # this return value will be used in score.html for the user to donwload the modified input.json file. 
     return data
